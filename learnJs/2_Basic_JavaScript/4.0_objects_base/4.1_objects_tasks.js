@@ -96,3 +96,103 @@
         console.log(menu);
     }
 }
+/**
+ * Найдите количество элементов в следующем объекте
+ */
+{
+    // Решение
+    let obj = {x: 1, y: 2, z: 3};
+    const res = Object.keys(obj).length
+}
+
+/**
+ * Для каких ключей данного объекта кавычки обязательны, а для каких нет?
+ */
+{
+    let obj = {
+        '1a': 1,
+        'b2': 2,
+        'с-с': 3,
+        'd 4': 4,
+        'e5': 5
+    };
+    // Ответ: для 1a, c-c, d 4
+}
+
+/**
+ * Исправьте ошибки, допущенные в следующем коде:
+ */
+{
+    let obj = {
+        '1a': 1,
+        'b2': 2,
+        'с-с': 3,
+        'd 4': 4,
+        'e5': 5
+    };
+
+    console.log(obj.1a);
+    console.log(obj.b2);
+    console.log(obj.c-c);
+    console.log(obj.d 4);
+    console.log(obj.e5);
+
+    // Решение
+    console.log(obj['1a']);
+    console.log(obj.b2);
+    console.log(obj['c-c']);
+    console.log(obj['d 4']);
+    console.log(obj.e5)
+}
+
+/**
+ * Дан следующий объект: let obj = {x: 1, y: 2, z: 3};
+ * Дана переменная key, в которой хранится один из ключей нашего объекта.
+ * Выведите с помощью этой переменной соответствующий элемент объекта.
+ */
+
+{
+    // Решение
+    let obj = {x: 1, y: 2, z: 3};
+    const key = 'x'
+    console.log(obj[key])
+}
+
+/**
+ * Скажите, что выведется в консоль в результате выполнения следующего кода
+ */
+{
+    let obj = {x: 1, y: 2, z: 3};
+
+    console.log('x' in obj); // true
+    console.log('w' in obj); // false
+}
+
+/**
+ * Поиск ошибок в коде с объектами JavaScript
+ */
+{
+    // Код должен вывести элемент объекта:
+    let obj = {x: 1, y: 2, z: 3};
+    console.log(obj[x]);
+    // Решение
+    console.log(obj['x'])
+}
+{
+    // Код должен вывести элемент объекта по ключу из переменной:
+    let obj = {x: 1, y: 2, z: 3};
+    let key = 'x';
+    console.log(obj.key);
+
+    // Решение
+    console.log(obj[key]);
+
+}
+{
+    //Код должен вывести сумму элементов объекта:
+    let obj = {x: 1, y: 2, z: 3};
+    let sum = obj[x] + obj[y] + obj[x];
+
+    // Решение
+    let sum2 = obj["x"] + obj["y"] + obj["x"];
+}

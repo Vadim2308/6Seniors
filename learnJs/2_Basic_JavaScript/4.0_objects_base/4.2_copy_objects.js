@@ -67,7 +67,7 @@
             id: 1
         };
         const object2 = {
-            id: 1
+            id: 1,
             title: "Title",
         };
         console.log(JSON.stringify(object1) === JSON.stringify(object2)); // false

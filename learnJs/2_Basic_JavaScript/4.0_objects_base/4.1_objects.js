@@ -78,7 +78,9 @@
     let obj = {
         for: 1,
         let: 2,
-        return: 3
+        return: 3,
+        ['name']:'Vadim', // => сконвертится в name: Vadim,
+        [Number(false)]: 'count' // => сконвертится в 0: count,
     };
 }
 {
