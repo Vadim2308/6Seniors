@@ -108,19 +108,6 @@
  * В частности, Symbol.toPrimitive (он лежит в каждом объекте) позволяет описать правила для объекта, согласно которым он будет преобразовываться к примитиву.
  * Symbol.iterator, который позволяет реализовать обход конструкции с помощью синтаксических конструкций for..of (по умолчанию он недоступен для объектов)
  */
-{
-    const object1 = {
-        [Symbol.toPrimitive](hint){
-            // hint string || number || default
-            if (hint === 'number') {
-                return 42; // При дефолтном преобразовании объекта (Number({}) => NaN). Но мы можем это изменить. Number(object) === 42
-            }
-            return null;
-        }
-    };
-    // https://www.youtube.com/watch?v=vgB5eNMvXBk&t=2s
-    // https://www.youtube.com/watch?v=Eig7jYk22LI
-}
 
 /**
  * P.S.
