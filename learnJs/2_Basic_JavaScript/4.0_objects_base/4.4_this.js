@@ -194,3 +194,20 @@
     console.log(this === window) // true
 })()
 }
+/**
+ * чему равен this
+ */
+{
+    const obj = {
+        name: 'Vadim',
+        car: this, // this  === window. Даже если this в объекте или в стрелке лежит на самом глубоком уровне, все равно возьмет из самого верха.т.е. из window
+        method() {
+            const obj2 = {
+                name: 'obj2',
+                age: this, // this === obj, т.к. method сформировал свой this, и внутри объекта this ссылается на obj. А вот внутри  age.car === window
+            };
+            console.log(obj2);
+        },
+    };
+    obj.method();
+}

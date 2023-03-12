@@ -12,8 +12,8 @@
  */
 
 {
-    const book = new Object({ title: 'Война и мир', author: 'Лев Толстой' })
-    const book2 = Object.create({ title: 'Война и мир', author: 'Лев Толстой' })
+    const book = new Object({ title: 'Война и мир', author: 'Лев Толстой' }) // тоже самое что и через {}
+    const book2 = Object.create({ title: 'Война и мир', author: 'Лев Толстой' }) // Собственные свойства будут пустые. Засунет эти новые свойства в прототип. obj.__proto__ = { title: 'Война и мир', author: 'Лев Толстой'}
 
     let user = {     // объект
         name: "John",  // под ключом "name" хранится значение "John"
@@ -209,4 +209,19 @@
     // в anotherBook записывается ссылка на объект
     const anotherBook = book
     console.log(book === anotherBook)// true
+}
+
+/**
+ * Object.getOwnPropertyNames vs Object.keys
+ * Object.getOwnPropertyNames(a)возвращает все собственные свойства объекта.
+ * Object.keys(a)возвращает все перечисляемые собственные свойства.
+ */
+{
+    const a = {};
+    Object.defineProperties(a, {
+        one: {enumerable: true, value: 1},
+        two: {enumerable: false, value: 2},
+    });
+    Object.keys(a); // ["one"]
+    Object.getOwnPropertyNames(a); // ["one", "two"]
 }
