@@ -209,5 +209,15 @@
             console.log(obj2);
         },
     };
-    obj.method();
+    obj.method(); // obj['method']();
+}
+
+/**
+ * this в массиве
+ */
+{
+    let arr = ["a",function() {console.log(this);}];
+    arr[1]() // this === ['a', ƒ]
+    let foo = arr[1]
+    foo() // this === window
 }
