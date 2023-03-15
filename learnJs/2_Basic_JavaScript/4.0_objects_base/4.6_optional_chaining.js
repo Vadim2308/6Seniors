@@ -3,7 +3,7 @@
  */
 {
     let user = {}; // пользователь без свойства "address"
-    alert(user.address.street); // Ошибка!
+    console.log(user.address.street); // Ошибка!
 }
 /**
  * Опциональная цепочка ?. немедленно останавливает вычисление и возвращает undefined, если значение перед ?. равно undefined или null.
@@ -14,14 +14,21 @@
 }
 {
     let user = null;
-    alert( user?.address ); // undefined
-    alert( user?.address.street ); // undefined
+    console.log( user?.address ); // undefined
+    console.log( user?.address.street ); // undefined
 }
 {
     let user = null;
     let x = 0;
     user?.sayHi(x++); // нет "user", поэтому выполнение не достигает вызова sayHi и x++
-    alert(x); // 0, значение не увеличилось
+    console.log(x); // 0, значение не увеличилось
+}
+
+/**
+ * Опциональная цепочка работает только с объявленными переменными
+ */
+{
+    user?.street // ReferenceError : user is nor defined
 }
 
 /**
@@ -34,7 +41,7 @@
 {
     let userAdmin = {
         admin() {
-            alert("Я админ");
+            console.log("Я админ");
         }
     };
     let userGuest = {};
@@ -52,12 +59,14 @@
 
     let user2 = null;
 
-    alert( user1?.[key] ); // John
-    alert( user2?.[key] ); // undefined
+    console.log( user1?.[key] ); // John
+    console.log( user1["firstName"]?.car ); // undefined
+    console.log( user2?.[key] ); // undefined
 }
 
 /**
  * Также мы можем использовать ?. с delete:
+ * Позволяет безопасно удалять свойства из объекта. Если undefined, то до удаления дело не дойдет
  */
 {
     let user = {

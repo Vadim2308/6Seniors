@@ -118,7 +118,7 @@
  * Пропуск скобок (BAD PRACTISE!)
  */
 {
-    let user = new User; // <-- без скобок
+    let user = new User; // <-- без скобок. Все параметры, которые ожидает User будут равны undefined
     // то же, что и
     let user = new User();
 }

@@ -1,5 +1,5 @@
 /**
- * This — это ключевое слово в JavaScript которое позволяет получить доступ к контексту;
+ * This — это ключевое слово в JavaScript, которое позволяет получить доступ к контексту;
  * Грубо говоря, this — это ссылка на некий объект, к свойствам которого можно получить доступ внутри вызова функции.
  * Этот this — и есть контекст выполнения.
  */
@@ -48,7 +48,6 @@
 /**
  * Как правило, методу объекта обычно требуется доступ к информации, хранящейся в объекте, для выполнения своей работы.
  * Для доступа к информации внутри объекта метод может использовать ключевое слово this.
-
  */
 {
     let user = {
@@ -165,10 +164,10 @@
     let user = {
         firstName: 'Ilya',
         sayHi() {
-            function arrow() {
+            function foo() {
                 console.log(this.firstName);
             }
-            arrow();
+            foo();
         },
     };
     user.sayHi(); // undefined
@@ -180,10 +179,10 @@
         let user = {
             firstName: 'Ilya',
             sayHi() {
-                function arrow() {
+                function foo() {
                     console.log(this.firstName);
                 }
-                arrow();
+                foo();
             },
         };
         user.sayHi(); // 'VADIM'
@@ -204,7 +203,7 @@
         method() {
             const obj2 = {
                 name: 'obj2',
-                age: this, // this === obj, т.к. method сформировал свой this, и внутри объекта this ссылается на obj. А вот внутри  age.car === window
+                age: this, // this === obj, т.к. method сформировал свой this, и внутри объекта this ссылается на obj. А вот внутри  obj.car === window
             };
             console.log(obj2);
         },

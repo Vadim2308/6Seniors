@@ -92,7 +92,7 @@
     alert( Symbol.keyFor(sym2) ); // id
 
     {
-        // Работает только с символами, созданные через .for. С неглоабльными вернет undefined
+        // Работает только с символами, созданные через .for. С неглобальными вернет undefined
         let globalSymbol = Symbol.for("name");
         let localSymbol = Symbol("name");
 

@@ -177,7 +177,7 @@
      * A) "Hello"
      * B) undefined
      * C) null
-     * D) Window objec
+     * D) Window object
      */
 }
 /**
