@@ -8,7 +8,7 @@
     };
     console.log(String(user)); // String(user). 1. Вызывается метод toString(). В дефолте метод toString() вернет [object Object]. Поэтому в консоли будет [object Object]
     console.log(+user); // Приводим к числу. 1.valueOf() => вернет объект user. Т.к. это не примитив, вызовется toString() => Number('[object Object]') => NaN
-    console.log(user + 500); // hint === default, т.к. унарный плюс может быть применен как к строкам, так и к числам.Вызывается valueOf() => вернет объект user. Т.к. это не примитив, вызовется toString() и вернет [object Object]. '[object Object]' + 500 === '[object Object]500'
+    console.log(user + 500); // hint === default, т.к. бинарный плюс может быть применен как к строкам, так и к числам.Вызывается valueOf() => вернет объект user. Т.к. это не примитив, вызовется toString() и вернет [object Object]. '[object Object]' + 500 === '[object Object]500'
 }
 
 {
@@ -68,4 +68,19 @@
      * Вопрос 1. console.log(obj[s])
      * Ответ: 1. 4
      */
+}
+
+{
+    /**
+     * Задача 3
+     * Расскажите про алгоритм сравнения
+     */
+    const obj = {};
+    const obj2 = {};
+
+    console.log(obj == obj2) // false, т.к. разные ссылки
+    console.log(obj === obj2) // false, т.к. нет разницы м/у == и ===
+    console.log(obj > obj2) // исторически сложилось, что > < преобразуются к "number". obj.valueOf()=>obj не примитив=>obj.toString()=>"object Object"=> Number("object Object") => NaN. NaN > NaN === false
+    console.log(obj == 1) // false, оператор нестрогого равно преобразует операнды к числу. Если объект сравнивается с помощью == со строкой, числом или символом,поэтому используется хинт "default".
+    console.log(obj + 1) // [object Object]1
 }
