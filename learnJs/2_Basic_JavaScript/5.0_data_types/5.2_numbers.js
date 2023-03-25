@@ -102,7 +102,7 @@
 
 {
     alert(Number.isFinite(123) ); // true
-    alert(Number.isFinite(Infinity) ); // false
+    alert(Number.isFinite(Infinity)); // false
     alert(Number.isFinite(2 / 0) ); // false
 
     // Обратите внимание на разный результат:
