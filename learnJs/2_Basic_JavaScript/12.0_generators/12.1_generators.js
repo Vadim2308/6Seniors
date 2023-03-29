@@ -1,6 +1,7 @@
 /**
  * https://www.youtube.com/watch?v=kGnxQ4rh_mM 01:09:23 => работа с fs на NODE
  * https://www.youtube.com/watch?v=czgxE_UQnDQ
+ * https://webtricks-master.ru/javascript/uchimsya-kodit-na-javascript-generatory-na-primerah/
 
  */
 function* generator() {
