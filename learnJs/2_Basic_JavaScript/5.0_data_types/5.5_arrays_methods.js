@@ -302,7 +302,6 @@
      * Array.prototype.sort()
      * Array.prototype.splice()
      * Array.prototype.fill()
-     * Array.prototype.join()
  * У массивов также есть некоторые методы, которые не изменяют исходный массив, а возвращают новый массив:
      * Array.prototype.slice()
      * Array.prototype.concat()
