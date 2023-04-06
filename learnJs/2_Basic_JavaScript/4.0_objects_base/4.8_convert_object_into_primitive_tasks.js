@@ -78,9 +78,13 @@
     const obj = {};
     const obj2 = {};
 
+    console.log(Boolean({})) //true
     console.log(obj == obj2) // false, т.к. разные ссылки
     console.log(obj === obj2) // false, т.к. нет разницы м/у == и ===
+    console.log(obj + obj2); // [object Object][object Object])
+    console.log(obj + 1) // [object Object]1
+    console.log(1 + obj) // 1[object Object]
     console.log(obj > obj2) // исторически сложилось, что > < преобразуются к "number". obj.valueOf()=>obj не примитив=>obj.toString()=>"object Object"=> Number("object Object") => NaN. NaN > NaN === false
     console.log(obj == 1) // false, оператор нестрогого равно преобразует операнды к числу. Если объект сравнивается с помощью == со строкой, числом или символом,поэтому используется хинт "default".
-    console.log(obj + 1) // [object Object]1
+    console.log(obj * 2) // NaN
 }

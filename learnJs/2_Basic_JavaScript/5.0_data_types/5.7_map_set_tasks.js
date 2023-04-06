@@ -98,3 +98,46 @@
     let keys = Array.from(map.keys());
     keys.push("more");
 }
+
+/**
+ * Подсчёт количества уникальных слов в строке с использованием Set:
+ */
+{
+    let str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur sed iaculis nisi.";
+    const words = str.split(' ')
+    const uniq = new Set(words).size
+}
+
+/**
+ * Преобразование массива объектов в Map, используя значение определённого свойства в качестве ключа:
+ */
+
+{
+    let people = [
+        { id: 1, name: "Alice" },
+        { id: 2, name: "Bob" },
+        { id: 3, name: "Charlie" }
+    ];
+
+    const map = new Map()
+
+    for(const {id,name} of people){
+        map.set(id,name)
+    }
+    console.log(map)
+}
+
+/**
+ * Нахождение максимального и минимального значения в Map:
+ */
+
+{
+    let ages = new Map();
+    ages.set("Alice", 25);
+    ages.set("Bob", 30);
+    ages.set("Charlie", 20);
+
+    const min = Math.min(...ages.values()); // 20
+    const max = Math.max(...ages.values()); // 30
+
+}
