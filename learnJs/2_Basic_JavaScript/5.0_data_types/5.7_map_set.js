@@ -241,10 +241,11 @@
 
 /**
  * Нюансы по уникальности new Set(). Для соблюдения уникальности не примитивов, необходимо добавлять объекты по ссылке
+ * Т.к. уникальность примитивов определяется по значению, а не примитивов по ссылке.
  */
 {
     const uniq = new Set();
-    uniq.add({ name: "Vadim" }).add({ name: "Vadim" }).add({ name: "Oleg" }).add({ name: "Oleg" });
+    uniq.add({ name: "Vadim" }).add({ name: "Vadim" }).add({ name: "Oleg" }).add({ name: "Oleg" }); // это разные объекты
     for (let user of uniq) {
         console.log(user.name); // Vadim Vadim Oleg Oleg
     }

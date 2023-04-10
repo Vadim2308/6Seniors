@@ -44,7 +44,7 @@
 }
 
 /**
- * WeakMap не поддерживает перебор и методы keys(), values(), entries(), у него нет 'size'
+ * WeakMap НЕ поддерживает перебор и методы keys(), values(), entries(), у него нет 'size'
  * В WeakMap присутствуют только следующие методы:
     * weakMap.get(key)
     * weakMap.set(key, value)
