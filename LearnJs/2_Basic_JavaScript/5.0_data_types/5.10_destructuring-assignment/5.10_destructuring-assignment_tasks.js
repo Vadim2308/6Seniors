@@ -84,6 +84,7 @@ object[Symbol.iterator] = function () {
 const [name, value, data] = object;   // object 20 Vadim
 
 /**
+ * Task 4
  * Реализуйте Symbol.iterator, который при дестктурирующем присваивании присваивает все в обратном порядке
  * {
  *     const arr = [1,2,3]
@@ -111,3 +112,15 @@ const [name, value, data] = object;   // object 20 Vadim
     console.log(a, b, c, k); // 3 2 1 undefined
 }
 
+/**
+ * Task 5
+ * Деструктрурировать массив как объект и получить не undefined значения.
+ */
+{
+    let arr = ["one", "two", "three"];
+    const { 0: first, 1: second, 2: third } = arr;
+    console.log(first); // "one"
+
+    // Второй вариант
+    const res = Object.fromEntries((arr.entries()))
+}
