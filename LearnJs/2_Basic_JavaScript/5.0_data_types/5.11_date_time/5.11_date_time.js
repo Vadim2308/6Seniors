@@ -1,5 +1,6 @@
 /**
  * Объект Date содержит дату и время, а также предоставляет методы управления ими.
+ * Библиотеки для работы со временем: day.js, moment.js
  */
 
 /**
@@ -115,4 +116,83 @@
         date.setSeconds(date.getSeconds() + 1000);
         console.log(date); // Fri Apr 14 2023 18:20:39
     }
+}
+
+/**
+ * Преобразование к числу, разность дат
+ * Если объект Date преобразовать в число, то получим таймстамп по аналогии с date.getTime()
+ */
+{
+    let date = new Date();
+    console.log(+date); // количество миллисекунд, то же самое, что date.getTime()
+
+    {
+        let start = new Date(); // начинаем отсчёт времени
+        // выполняем некоторые действия
+        for (let i = 0; i < 100000; i++) {
+            let doSomething = i * i * i;
+        }
+        let end = new Date(); // заканчиваем отсчёт времени
+        console.log( `Цикл отработал за ${end - start} миллисекунд` );
+    }
+}
+
+/**
+ * Date.now()
+ * Cуществует особый метод Date.now(), возвращающий текущую метку времени. (таймшатмп)
+ * Date.now() === new Date().getTime() || Date.now() === +new Date()
+ */
+
+/**
+ * Разбор строки с датой
+ * Метод Date.parse(str) считывает дату из строки.
+ *
+ * Формат строки должен быть следующим: YYYY-MM-DDTHH:mm:ss.sssZ, где:
+     * YYYY-MM-DD – это дата: год-месяц-день.
+     * Символ "T" используется в качестве разделителя.
+     * HH:mm:ss.sss – время: часы, минуты, секунды и миллисекунды.
+     * Необязательная часть 'Z' обозначает часовой пояс в формате +-hh:mm. Если указать просто букву Z, то получим UTC+0.
+ *
+ * Вызов Date.parse(str) обрабатывает строку в заданном формате и возвращает таймстамп
+ */
+{
+    let ms = Date.parse('2012-01-26T13:51:50.417-07:00');
+    console.log(ms); // 1327611110417 (таймстамп)
+}
+
+
+/**
+ * Intl: интернационализация в JavaScript
+ * Intl.dateTimeFormat() - интернациональный конструктор для форматирования даты
+ */
+{
+    const now = new Date();
+    const locale = navigator.language
+    console.log(locale) // ru-RU
+
+    /**
+     * 2-digit. Например 4/16/2023 в 04/16/2023
+     * long. Название например месяца на языке. 16 апреля 2023 г. || April 16, 2023
+     * era: Подставляет к дате систему исчесления, например "16 апреля 2023 г. от Рождества Христова"
+     */
+
+    const dateOptions = {
+        day: 'numeric',
+        month: 'long', // numeric || 2-digit || "long" || "short" || "narrow".
+        year: 'numeric',
+        era: 'long',
+        weekday: 'short', // короткий день недели ("long" || "short" || "narrow")
+        timeZoneName: 'short', // подставляет ТЗ в строку с датой (в GMT+3)
+        hour: 'numeric', //numeric || 2-digit' Подставяет в строку часы
+        minute: 'numeric', // Подставяет в строку минуты
+        second: 'numeric', // Подставяет в строку секунды
+    };
+
+    const RUDate = new Intl.DateTimeFormat(locale, dateOptions);
+    const USDate = new Intl.DateTimeFormat('en-US', dateOptions);
+    const UKDate = new Intl.DateTimeFormat('en-UK', dateOptions);
+
+    console.log(RUDate.format(now)); // 16.04.2023
+    console.log(USDate.format(now)); // 4/16/2023
+    console.log(UKDate.format(now)); // 16/04/2023
 }

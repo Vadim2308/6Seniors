@@ -67,3 +67,9 @@
  * если стрелочная функция определена в методе объекта, который описан через FD, то this в стрелке ссылается на this этого метода
  * this в стрелке на верхнем уровне со строгим или нет режимом равен window
  */
+
+/**
+ * Чему равен this в обработчиках ?
+ * elem.addEventListener("click",()=>{console.log(this)}) this === Window
+ * elem.addEventListener("click",function(){console.log(this)}) this === elem
+ */
