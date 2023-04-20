@@ -44,12 +44,11 @@
 {
     JSON.stringify(undefined) => undefined
 
-    // число в JSON остаётся числом
-    console.log( JSON.stringify(1) ) // 1
+    console.log( JSON.stringify(1) ) // строка 1
     // строка в JSON по-прежнему остаётся строкой, но в двойных кавычках
     console.log( JSON.stringify('test') ) // "test"
-    console.log( JSON.stringify(true) ); // true
-    console.log( JSON.stringify([1, 2, 3]) ); // [1,2,3]
+    console.log( JSON.stringify(true) ); // строка true
+    console.log( JSON.stringify([1, 2, 3]) ); // строка [1,2,3]
 }
 
 /**
