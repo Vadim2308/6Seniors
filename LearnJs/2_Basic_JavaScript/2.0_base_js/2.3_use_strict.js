@@ -62,3 +62,16 @@
  * В строгом в режиме запрещено использовать в коде некоторые слова, которые были специально зарезервированы для того, чтобы использовать их в будущем.
  * Это слова implements, interface, let, package, private, protected, public, static, yield
  */
+
+/**
+ * Нельзя добавлять в примитивы свойства
+ *
+ * В нестрогом режиме будет undefined
+ */
+{
+    "use strict";
+    let str = "Hello";
+    str.something = 5; // Cannot create property 'something' on string 'Hello'
+    console.log(str.something); // ?
+
+}

@@ -9,6 +9,14 @@ console.log(map.__proto__ === Map.prototype)
 console.log(String.prototype.__proto__ === Object.prototype);
 console.log(Object.prototype.__proto__ === null);
 
+{
+    /**
+     * Почему такая цепочка
+     */
+    map.__proto__ === Map.prototype
+    Map.prototype.__proto__ === Object.prototype
+    Object.prototype.__proto__ === null
+}
 
 {
     console.log({} instanceof Array); // Как сделать чтоб прототип объект был инстансом массива ?

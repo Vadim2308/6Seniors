@@ -160,6 +160,15 @@
     console.log(ms); // 1327611110417 (таймстамп)
 }
 
+/**
+ * Форматирование локалей без Intl.
+ */
+{
+
+    new Date().toLocaleString()
+    new Date().toLocaleString("en")
+    new Date().toLocaleString("fr")
+}
 
 /**
  * Intl: интернационализация в JavaScript

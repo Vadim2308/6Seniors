@@ -48,7 +48,7 @@ const data = [];
               }
               console.log(res)
               data.push(res.value)
-        },[500])
+        },500)
 
     })()
 }

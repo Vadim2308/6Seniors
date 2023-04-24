@@ -218,7 +218,6 @@
  * DJB2 - это простая некриптографическая хэш-функция, созданная Дэниелом Дж. Бернштейн (собственно отсюда и название функции - инициалы автора).
  * Он используется для различных целей, таких как индексация, поиск и сравнение данных.
  * Эта функция используется для создания уникального значения для каждой строки, которое может быть использовано в качестве ключа в хэш-таблице
- * // TODO: привести конкретные примеры для использования (https://thestrangeadventurer.com/hesh-funkciya-djb2/)
  */
 {
     function djb2Hash(str) {
@@ -255,17 +254,57 @@
  */
 
 /**
- * TODO написать функцию, которая будет через интервал присылать строчки, и функция хэширования будет их преборазовавывать и сравнивать
+ * Пример использования.
+ * У нас есть какой нибудь ресурс, который содержит текст. При запросе мы этот текст получаем, и далее, если текст изменился по сравнению с прошлым разом, нам надо как то уведомить пользователей что контент обновился.
+ * Как вариантом решения данной задачи может быть функция, которая хеширует наш текст. При получении данных мы также хешируем текст, и проверяем хэши
+ * Если они идентичны => ничего не делаем. Если нет, выводим алерт, что текст изменился
  */
 {
-    const hashTable = {};
+    const fakeApiRequest = () => new Promise(resolve => setTimeout(()=>resolve(text), 2000));
 
-    function addToHashTable(key, value) {
-        const hashKey = djb2Hash(key);
-        hashTable[hashKey] = value;
+    function djb2Hash(str) {
+        let hash = 5381;
+        for (let i = 0; i < str.length; i++) {
+            const charCode = str.charCodeAt(i);
+            hash = ((hash << 5) + hash) + charCode;
+        }
+        return hash;
     }
 
-    addToHashTable('name', 'John Doe');
+    const generateHash = (value) => djb2Hash(value)
+    const hashTable = new Map();
+
+    function addToHashTable(value) {
+        const hashKey = generateHash(value);
+        hashTable.set(hashKey,value);
+    }
+
+    let text = "Lorem ipsum dolor sit amet";
+
+    async function* pingServer(requestsCount){
+        let n = 0;
+        while (n < requestsCount) {
+            const responseText = await fakeApiRequest();
+            const hash = generateHash(responseText)
+            if(hashTable.has(hash)){
+                console.log("\x1b[36m",'Уже есть такой текст. Возьмем его из хеш таблицы')
+            } else {
+                console.warn("\x1b[33m", 'Warning: Текст изменился! Добавляем результат в хеш-таблицу, уведомляем пользователей')
+                addToHashTable(text)
+            }
+            if(n === 3){
+                text += '-add description';
+            }
+            n++
+            yield hashTable
+        }
+    }
+
+    (async()=>{
+        for await (const hashTable of pingServer(6)){
+            console.log(Object.fromEntries(hashTable))
+        }
+    })()
 }
 
 
