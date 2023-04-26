@@ -32,19 +32,27 @@
     const obj = {
         0: 1,
         1: 3,
-        length: 3,
+        length: 2,
     }
     Test.apply({}, obj); // Принимает псевдомассив || Array
 }
 
 {
-    function Name() {}
+    function Name() {
+        console.log(arguments)
+    }
 
     function Test() {
-        Name.call({name: 123}, ...arguments);
+        console.log(!!arguments[Symbol.iterator]) // true
+
+        const iterator = arguments[Symbol.iterator]()
+        console.log(iterator.next()) // { value: 1, done: false }
+
+        Name.call({name: 123}, ...arguments); // ...arguments 1,2,3,4,5
         Name.apply({name: 123}, arguments);
     }
 
+    Test(1,2,3,4,5)
 }
 
 

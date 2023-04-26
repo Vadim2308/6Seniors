@@ -164,3 +164,46 @@
         }
     }
 }
+
+/**
+ * Реализуйте функцию с рекурсией и без, которая принимает объект и путь в виде строки, и возвращает найденный ключ
+ */
+
+{
+
+    // v1
+    function getValueByPath(obj, path) {
+        if (!path) return obj;
+        const splittedPath = path.split('.');
+        const [first, ...rest] = splittedPath;
+        if(obj[first] !== undefined){
+            return getValueByPath(obj[first],rest.join('.'));
+        } else {
+            return null;
+        }
+    }
+
+    // v2
+    function getValueByPath(obj, path) {
+      const splittedPath = path.split('.');
+      for(let part of splittedPath){
+        if(obj[part] !== undefined){
+          obj = obj[part]
+        } else {
+          return null
+        }
+      }
+    return obj
+}
+
+    const obj = {
+        a: {
+            b: {
+                c: 42
+            }
+        }
+    };
+
+console.log(getValueByPath(obj, 'a.b.c')); // Выведет 42
+console.log(getValueByPath(obj, 'a.b.d')); // Выведет undefined
+}

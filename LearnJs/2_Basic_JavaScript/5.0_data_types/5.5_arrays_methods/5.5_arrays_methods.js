@@ -301,8 +301,9 @@
      * Array.prototype.reverse()
      * Array.prototype.sort()
      * Array.prototype.splice()
-     * Array.prototype.fill()
  * У массивов также есть некоторые методы, которые не изменяют исходный массив, а возвращают новый массив:
+     *   Array.prototype.reduce()
+     *   Array.prototype.reduceRight()
      * Array.prototype.slice()
      * Array.prototype.concat()
      * Array.prototype.map()
