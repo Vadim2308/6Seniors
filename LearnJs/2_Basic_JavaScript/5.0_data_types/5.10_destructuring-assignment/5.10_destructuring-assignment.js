@@ -1,4 +1,10 @@
 /**
+ * Links:
+ *  1. https://habr.com/ru/companies/otus/articles/594541/
+ */
+
+
+/**
  * Деструктурирующее присваивание – это специальный синтаксис, который позволяет нам «распаковать» любые ПЕРЕБИРАЕМЫE объекты. (т.е. реализован Symbol.iterator)
  */
 
@@ -187,6 +193,33 @@
     console.log(height); // 200
     console.log(item1);  // Cake
     console.log(item2);  // Donut
+}
+
+/**
+ * Ссылки.
+ */
+{
+    const a = {
+        name:{value:6}
+    }
+    let {name} = a
+    name = {value:null}
+    console.log({a:a.name,name}) // { a: { value: 6 }, name: { value: null } }
+
+    const profile = {
+        firstName: "Oluwatobi",
+        lastName: "Sofela",
+        website: "codesweetly.com"
+    };
+
+    /**
+     * мы сказали компьютеру, чтобы тот извлек значения из объекта profile и записал их в переменные, указанные слева от оператора присваивания.
+     * В результате JavaScript парсит объект profile и копирует его первое значение ("Oluwatobi") в первую переменную деструктурирующего объекта (firstName).
+     * Наконец JavaScript копирует третье значение из объекта profile ("codesweetly.com") в третью переменную (website) деструктурирующего объекта.
+     * Отметим,значения ключей представляют собой НОВЫЕ ПЕРЕМЕННЫЕ.
+     */
+    const { firstName, lastName, website } = profile;
+
 }
 
 /**

@@ -8,7 +8,9 @@ function* generator() {
     console.log(0);
     yield 1;
     yield 2;
-    yield 3;
+    const res = yield 3;
+    console.log(res) // Если в next() ничего не передали, то res === undefined
+
 }
 
 /*
