@@ -44,6 +44,43 @@ console.log(iterator.next()); // {"value": undefined,"done": true}
 }
 
 /**
+ * Возврашаемый объект генератора всегда один, даже если мы его присваиваем в разные переменные
+ */
+{
+    function* generator() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+
+    const gen = generator()
+
+    const iter = gen[Symbol.iterator]()
+    const iter2 = gen[Symbol.iterator]()
+
+    console.log(iter.next(),iter2.next()) // { value: 1, done: false } { value: 2, done: false }
+    console.log(iter === iter2) // true
+
+    // Поэтому можем создавать разные инстансы генератора, и они будут разные
+    {
+        function* generator() {
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+
+        const gen = generator()
+        const gen2 = generator()
+
+        const iter = gen[Symbol.iterator]()
+        const iter2 = gen2[Symbol.iterator]()
+
+        console.log(iter.next(),iter2.next()) // { value: 1, done: false } { value: 1, done: false }
+        console.log(iter === iter2) // false
+    }
+}
+
+/**
  * Собственный итератор
  */
 {
