@@ -175,3 +175,9 @@
     // pseudoArr.reverse();     // TypeError: pseudoArr.reverse is not a function
     console.log(pseudoArr);     // Output: { '0': 5, '1': 4, '2': 3, '3': 2, '4': 1, length: 5 }
 }
+
+{
+    const withReverse = Array.prototype.reverse.bind([1,2,3])
+
+    console.log(withReverse()) // [3,2,1]
+}

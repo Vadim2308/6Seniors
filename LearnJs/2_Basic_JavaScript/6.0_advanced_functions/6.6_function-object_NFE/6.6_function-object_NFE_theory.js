@@ -93,7 +93,7 @@
     console.log(fn2.counter); // Output: 3 - Все норм, тут мы не меняем контекст, ссылка та же
 
     fn2 = fn2.bind(obj3);
-    console.log(fn2.counter); // Output: undefined - Поменяли контекст - св-ва обнулились
+    console.log(fn2.counter); // Output: undefined - Поменяли контекст - св-ва обнулились (Результатом работы bind является другой объект)
 
     fn2.counter = 1000;
     console.log(fn2.counter);  // Output: 1000 - Присвоили новое значение св-ву
