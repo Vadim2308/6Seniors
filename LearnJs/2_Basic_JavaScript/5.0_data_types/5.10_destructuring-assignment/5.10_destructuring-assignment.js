@@ -42,6 +42,12 @@
     console.log(obj);     // Output: { name: 'Cool', value: 'Man' }
 }
 
+// Можно сразу достать из первого аргумента нужное значение
+{
+    const [{id}] = [{id:3}]
+    console.log(id) //3
+}
+
 // entries
 {
     let user = {

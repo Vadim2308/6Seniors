@@ -122,6 +122,10 @@
     alert(user); // toString -> John
     alert(user + 500); // valueOf() => user => toString -> John500
 }
+{
+    const obj = {toString:null}
+    console.log(obj <= obj) // Cannot convert object to primitive value
+}
 
 /**
  * Дальнейшие преобразования

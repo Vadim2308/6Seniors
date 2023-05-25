@@ -85,6 +85,7 @@
     console.log(obj + 1) // [object Object]1
     console.log(1 + obj) // 1[object Object]
     console.log(obj > obj2) // исторически сложилось, что > < преобразуются к "number". obj.valueOf()=>obj не примитив=>obj.toString()=>"object Object"=> Number("object Object") => NaN. NaN > NaN === false
+    console.log(obj >= obj2) // true
     console.log(obj == 1) // false, оператор нестрогого равно преобразует операнды к числу. Если объект сравнивается с помощью == со строкой, числом или символом,поэтому используется хинт "default".
     console.log(obj * 2) // NaN
 }
