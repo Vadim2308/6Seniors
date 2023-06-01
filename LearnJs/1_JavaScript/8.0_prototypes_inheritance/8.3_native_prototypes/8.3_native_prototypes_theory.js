@@ -5,7 +5,7 @@
 {
     let obj = {};
     const obj2 = new Object();
-    const obj3 = Object.create(null); // Создание без __proto__.  alert(obj3); //Uncaught TypeError: Cannot convert object to primitive value
+    const obj3 = Object.create(null); // Создание без __proto__.  al ert(obj3); //Uncaught TypeError: Cannot convert object to primitive value
     alert(obj.__proto__ === Object.prototype); // true
     // obj.toString === obj.__proto__.toString === Object.prototype.toString
     // Object.prototype.__proto__  === null // true , Наверху иерархии встроенных прототипов находится Object.prototype. Поэтому иногда говорят, что «всё наследует от объектов».

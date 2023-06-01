@@ -112,6 +112,7 @@
 
     const counter = new IncreasingCounter();
 
+    console.log(counter.#count) // также нет доступа
 
 
     // Наследники не имеют доступа к приватным полям родителя
