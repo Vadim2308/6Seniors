@@ -7,6 +7,17 @@
  * 1353 + 3531 = 4884     - step 4, palindrome!
  */
 const reverseNum = (n) => n.toString().split('').reverse().join('');
+
+// Паллиндром через 2 указателя (Уточнить это оно или нет)
+String.prototype.isPalindrome = function(){
+    for(let i = 0; i < this.length; i++){
+        if(this[i].toLowerCase() !== this.at(-1 - i).toLowerCase()) return false
+    }
+    return true
+}
+console.log('abbsa'.isPalindrome())
+
+
 function isPalindrome(n) {
     return n.toString() === reverseNum(n);
 }

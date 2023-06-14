@@ -15,7 +15,6 @@
             if (cache.has(x)) {    // если кеш содержит такой x,
                 return cache.get(x); // читаем из него результат
             }
-
             let result = func(x); // иначе, вызываем функцию
             cache.set(x, result); // и кешируем (запоминаем) результат
             return result;
@@ -29,6 +28,31 @@
 
     alert( withCache(2) ); // slow(2) кешируем
     alert( "Again: " + withCache(2) ); // возвращаем из кеша
+}
+
+{
+    let callCount = 0;
+    const memoizedFn = memoize(function(a,b){
+        callCount += 1;
+        return a + b;
+    })
+    function memoize(fn){
+        const hash = new Map()
+        return function(){
+            const key = JSON.stringify(arguments) // {0:"", 1:'' и так далее}
+            if(hash.has(key)){
+                return hash.get(key)
+            } else {
+                const result = fn.apply(this,arguments)
+                hash.set(key,result)
+                return result
+            }
+        }
+    }
+
+    console.log(memoizedFn(2,3)) //5
+    console.log(memoizedFn(2,3)) //5
+    console.log(callCount)
 }
 
 /**
