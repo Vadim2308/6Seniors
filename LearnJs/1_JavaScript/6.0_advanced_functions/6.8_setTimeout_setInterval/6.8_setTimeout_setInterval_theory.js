@@ -67,6 +67,15 @@
     }
     recursionTimeout();
 }
+ // Пример с увеличением периода вызова функции request на 100мс каждый вызов
+{
+    let period = 500;
+    let timer = setTimeout(function request() {
+        console.log('tick', period)
+        period += 100
+        timer = setTimeout(request, period)
+    })
+}
 
 /**
  * setTimeout с нулевой задержкой. Это планирует вызов func настолько быстро, насколько это возможно.
