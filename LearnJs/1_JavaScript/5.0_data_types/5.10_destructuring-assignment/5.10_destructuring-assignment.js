@@ -15,10 +15,10 @@
     let [firstName, surname] = arr;
     [v1, v2] = arr; //Равносильно вышестоящему. Можно опустить ключевое слово "let"
     {
-        let [firstName, surname] = "Ilya Kantor".split(' ');
+        let [firstName, surname, three = 'defaultValue'] = "Ilya Kantor".split(' ');
     }
     console.log(firstName); // Ilya
-    console.log(surname);  // Kanto
+    console.log(surname);  // Kantor
 }
 
 // Можно пропустить переменную, указав 'холостую' запятую

@@ -137,7 +137,7 @@
                 return this.age + 5
             }
         }
-        Foo.prototype = new Bar()
+        Foo.prototype = { ...Foo.prototype, constructor:Foo,...new Bar()}
         const foo = new Foo()
         console.log(foo.name) // "Vadim"
     }
@@ -152,7 +152,7 @@
             this.appleType = options.appleType
         }
 
-        const apple = new Apple({name:'apple',color:"yellow",appleType:'golden'})
+        const apple = new Apple({ name:'apple',color:"yellow",appleType:'golden' })
         console.log(apple.color) // "yellow"
     }
 }

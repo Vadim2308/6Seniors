@@ -45,6 +45,22 @@
  */
 
 {
+    const f = () => {
+        console.log(arguments); // ReferenceError: arguments is not defined
+    };
+    f();
+    //-------------//
+    function foo() {
+        const fn = () => {
+            console.log(arguments); // {0: 1}
+        };
+        fn();
+    }
+    foo(1);
+}
+
+
+{
     function decorator(fn, ms) {
         return function () {
             setTimeout(() => fn.apply(this, arguments), ms)    // this - стрелка возьмет this из вышестоящей функции

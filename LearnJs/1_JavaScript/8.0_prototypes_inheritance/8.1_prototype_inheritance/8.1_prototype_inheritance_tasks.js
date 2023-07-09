@@ -36,8 +36,8 @@
         jumps: null
     };
     let rabbit = {
+        jumps: true,
         __proto__: animal,
-        jumps: true
     };
 
     alert( rabbit.jumps ); // true
@@ -74,7 +74,7 @@
     };
 
     let pockets = {
-        money: 2000
+        money: 2000,
         __proto__:bed
     };
 }

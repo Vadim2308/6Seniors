@@ -9,15 +9,20 @@
  *          Handler2: Data 2
  *          Handler2: Data 4
  */
+
+/**
+ * use - cases
+ * Идеально подойдет, если в родительском компненте надо вызвать функцию, находщуюся в дочернем компоненте.
+ * Не придется ее как то пробрасывать наверх и сохранять в стейте, в родительском компоненте
+ */
 {
     class EventEmitter {
         #collection = new Map();
 
         on(key, cb) {
-            if (!this.#collection.has(key)) {
-                this.#collection.set(key, []);
-            }
-            this.#collection.set(key, [...this.#collection.get(key), cb]);
+            const listeners = this.#collection.get(key) || [];
+            listeners.push(cb);
+            this.#collection.set(key, listeners);
             return this;
         }
 
@@ -37,6 +42,14 @@
                 return this;
             }
             this.#collection.delete(key);
+            return this;
+        }
+        emitAll() {
+            this.#collection.forEach((listeners) => {
+                listeners.forEach((listener) => {
+                    listener.call(this);
+                });
+            });
             return this;
         }
     }

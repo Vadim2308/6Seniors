@@ -21,7 +21,7 @@
 
     let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
 
-    alert(JSON.stringify(descriptor, null, 2 ) );
+    alert(JSON.stringify(descriptor, null, 2 ));
     /* дескриптор свойства:
     {
       "value": "John",
@@ -92,7 +92,7 @@
         writable: false
     });
 
-    user.name = "Pete"; //  (TypeError: Cannot assign to read only property 'name' of object ) Ошибки появляются только в строгом режиме
+    user.name = "Pete"; //  (TypeError: Cannot assign to read only property 'name' of object ) (!)Ошибки появляются только в строгом режиме
 }
 
 /**
@@ -223,7 +223,7 @@
 }
 {
     Object.seal(obj)
-    // Запрещает добавлять/удалять свойства. Устанавливает configurable: false для всех существующих свойств.
+    // Запрещает добавлять/удалять свойства. Также устанавливает configurable: false для всех существующих свойств.
 }
 {
     Object.freeze(obj)
@@ -249,3 +249,6 @@
         // На практике эти методы используются редко.
     }
 }
+
+// Проверить Object.freeze Object.seal на вложенном объекта
+// Проверить пропсы реакта на свойства

@@ -14,7 +14,7 @@
 
     let rabbit = new Rabbit("White Rabbit"); //
 
-    alert( rabbit.eats ); // true
+    console.log( rabbit.eats ); // true
 }
 
 /**
@@ -26,6 +26,7 @@
     function Rabbit() {}
     /* прототип по умолчанию
     Rabbit.prototype = { constructor: Rabbit };
+    Rabbit.__proto__ === Function.prototype
     */
     console.log( Rabbit.prototype.constructor === Rabbit ); // true
 
@@ -53,7 +54,7 @@
     };
 
     let rabbit = new Rabbit();
-    alert(rabbit.constructor === Rabbit); // false. Т.к. перезаписали объект prototype на новый.
+    console.log(rabbit.constructor === Rabbit); // false. Т.к. перезаписали объект prototype на новый.
     // Чтобы сохранить мы можем либо добавить свойство, либо заново создать свойство constructor
     {
         Rabbit.prototype.jumps = true

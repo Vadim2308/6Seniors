@@ -12,7 +12,7 @@ const str = "1plus2plus3minus4"
 // 1
 {
     function calculate(str){
-        const replaced = str.replace(/plus/g,'+').replace(/plus/g,'-');
+        const replaced = str.replace(/plus/g,'+').replace(/minus/g,'-');
         return String(eval(replaced))
     }
 }
@@ -28,4 +28,26 @@ const str = "1plus2plus3minus4"
             .reduce((a, c) => +a + +c)
         return String(result);
     }
+}
+
+// 3
+{
+    const calculate = (data) => {
+        const replaced = data.replace(/plus/ig,"+").replace(/minus/ig,'-').replace(/\s/ig, '')
+        let result = 0
+
+        for(let i = 0; i < replaced.length; i++){
+            if(replaced[i] === '+')continue;
+            if(replaced[i] === '-'){
+                result-=replaced[i+1]
+                i++
+                continue;
+            }
+            result+=Number(replaced[i])
+        }
+
+        return result;
+    }
+
+    calculate("1 minus 2 minus 3")
 }

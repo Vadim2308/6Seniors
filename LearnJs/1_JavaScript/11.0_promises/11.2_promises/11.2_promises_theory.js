@@ -150,7 +150,12 @@
         })
         .finally(() => console.log("Промис завершён")) // срабатывает первым
         .catch(err => console.log(err));  // <-- .catch показывает ошибку
-    }
+
+        // ---------------------- //
+        Promise.resolve()
+        .finally(()=>{ throw 1 })
+        .then(()=>console.log(2)) // не сработает
+        .catch(()=>console.log(4)) // 4
 }
 
 /**

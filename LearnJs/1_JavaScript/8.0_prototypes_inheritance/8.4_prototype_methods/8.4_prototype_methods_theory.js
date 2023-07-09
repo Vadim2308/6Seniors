@@ -17,9 +17,9 @@
     // создаём новый объект с прототипом animal
     let rabbit = Object.create(animal); // rabbit === {}
 
-    alert(rabbit.eats); // true (Из прототипа)
+    console.log(rabbit.eats); // true (Из прототипа)
 
-    alert(Object.getPrototypeOf(rabbit) === animal); // получаем прототип объекта rabbit ({eats: true})
+    console.log(Object.getPrototypeOf(rabbit) === animal); // получаем прототип объекта rabbit ({eats: true})
 
     Object.setPrototypeOf(rabbit, {}); // заменяем прототип объекта rabbit на {}
 }
@@ -33,12 +33,12 @@
     };
 
     let rabbit = Object.create(animal, {
-        jumps: { // Это свойство будет записано в собственноперечисляемые свойства. Свойство eats будет в прототипе
+        jumps: { // Это свойство будет записано в собственно-перечисляемые свойства. Свойство eats будет в прототипе
             value: true
         }
     });
 
-    alert(rabbit.jumps); // true
+    console.log(rabbit.jumps); // true
 
     const o = Object.create(Object.prototype, {foo: {value: 'zepa', writable: true, configurable: true}, bar: {configurable: false, get() {return this.foo} } });
     console.log(o.bar)
@@ -69,6 +69,7 @@
 
     // Можно законтрить через создание пустого объекта, без прототипов
     // Теперь свойство __proto__ обрабатывается как обычное свойство
+    // Это может быть полезно если нам не нужны унаследованные свойства, методы, в теории может апнуться перфоманс (хотя сомнительно), и как пример это использование в качестве хещ таблицы, где ключи и значения могут быть произвольными значениями. При этом нет риска конфликтов с унаследованными свойствами или методами
     {
         let obj = Object.create(null);
 
@@ -78,7 +79,7 @@
         console.log(obj[key]); // "some value"
 
         // Недостаток в том, что у таких объектов не будет встроенных методов объекта, таких как toString:
-        alert(obj); // Ошибка (no toString)
+        console.log(obj); // Ошибка (no toString)
 
         // Однако большая часть методов, связанных с объектами, имеют вид Object.something(...).
         // Подобные методы не находятся в прототипе, так что они продолжат работать для таких объектов:{
@@ -86,7 +87,7 @@
             let chineseDictionary = Object.create(null);
             chineseDictionary.hello = "你好";
             chineseDictionary.bye = "再见";
-            alert(Object.keys(chineseDictionary)); // hello,bye
+            console.log(Object.keys(chineseDictionary)); // hello,bye
         }
     }
 }
