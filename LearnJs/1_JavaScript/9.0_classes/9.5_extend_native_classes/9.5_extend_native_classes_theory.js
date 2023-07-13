@@ -85,3 +85,17 @@
  * Обычно классы наследуют статические методы. НО ВСТРОЕННЫЕ НЕ НАСЛЕДУЮТ
  * Благодаря этому у Array отсутствует Array.keys()
  */
+
+
+// Правило наследования
+{
+    class A {}
+    console.log(A.__proto__ === Function.prototype) // true
+    class B extends A {}
+    console.log(B.__proto__ === A) // true Если есть ключевое слово extends, то оно в __proto__ сетит родителя
+    console.log(B.prototype) //{constructor:B}
+    class C extends Object {}
+    console.log(C.__proto__ === Object) // true Если есть ключевое слово extends, то оно в __proto__ сетит родителя
+    console.log(C.prototype) //{constructor:C}
+}
+}
