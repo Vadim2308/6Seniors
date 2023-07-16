@@ -51,3 +51,20 @@ const str = "1plus2plus3minus4"
 
     calculate("1 minus 2 minus 3")
 }
+
+//v3
+{
+    const mapped = {
+        'plus':'+',
+        'minus':'-'
+    }
+    function calculate(str, conditions) {
+        return Object.entries(conditions).reduce(
+            (result, [key, value]) => result.replace(new RegExp(key, 'g'), value),
+            str
+        );
+    }
+
+    const str = "1plus2plus3minus4plus8"
+    console.log(calculate(str,mapped))
+}
