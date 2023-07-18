@@ -223,3 +223,15 @@
 
     // Output: 8 6 2 0 4 3 1
 }
+
+{
+    setTimeout(()=>{
+        console.log(5)
+    })
+
+    const p1 = Promise.resolve().then(()=>console.log(1)).then(()=>console.log(2))
+    const p2 = Promise.resolve().then(()=>console.log(3)).then(()=>console.log(4))
+
+    console.log(0)
+    // Output 0 1 3 2 4 5
+}

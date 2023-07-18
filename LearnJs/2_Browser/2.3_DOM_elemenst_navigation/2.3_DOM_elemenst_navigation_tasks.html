@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>Пользователи:</div>
+<ul>
+    <li>Джон</li>
+    <li>Пит</li>
+</ul>
+<script>
+    /**
+     * Напишите код, как получить…
+     * элемент <div>?
+     * <ul>?
+     * второй <li> (с именем Пит)?
+     */
+     const divElem = document.body.firstElementChild
+    const ulElem = divElem.nextElementSibling
+    const pite = ulElem.lastElementChild
+    console.log({divElem,ulElem,pite})
+    /**
+     * Если elem – произвольный узел DOM-элемента…
+     * Правда, что elem.lastChild.nextSibling всегда равен null? => Да, elem.lastChild всегда последний, у него нет ссылки nextSibling.
+     * Правда, что elem.children[0].previousSibling всегда равен null ? => Нет. Может быть и текстовый узел.
+     */
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div>Начало</div>
+<ul>
+  <li>Информация</li>
+</ul>
+<div>Конец</div>
+<script>
+  for (let i = 0; i < document.body.childNodes.length; i++) {
+    console.log(document.body.childNodes[i] ); // #text(Все переносы также попадают в цикл) <div>Начало</div> #text <ul>...</ul>#text <div>Конец</div>#text
+  }
+  //========================================//
+  for (let prop in document.body.childNodes) console.log(prop); // (Так не делаем!) выводит 0, 1, length, item, values и другие свойства, т.к. это псевдомассив и пробегается по ключам.
+  // =====================================//
+  for (let elem of document.body.children) {
+    console.log(elem); // DIV, UL, DIV, SCRIPT
+  }
+</script>
+</body>
+</html>
