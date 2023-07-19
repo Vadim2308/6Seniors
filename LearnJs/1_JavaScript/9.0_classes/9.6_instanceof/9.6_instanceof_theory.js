@@ -50,7 +50,7 @@
         class Rabbit extends Animal {}
 
         let rabbit = new Rabbit();
-        alert(rabbit instanceof Animal); // true
+        console.log(rabbit instanceof Animal); // true
 
         // rabbit.__proto__ === Animal.prototype (нет совпадения)
         // rabbit.__proto__.__proto__ === Animal.prototype (совпадение!)
@@ -65,6 +65,9 @@
     class BaseClass{}
     class ExtendedClass extends BaseClass{}
     console.log(BaseClass.isPrototypeOf(ExtendedClass)) // true BaseClass содержится в прототипе ExtendedClass
+    console.log(Object.prototype.isPrototypeOf({})) // true
+    console.log(Object.prototype.isPrototypeOf([])) // true
+    console.log(Object.prototype.isPrototypeOf(()=>{})) // true
 }
 
 /**

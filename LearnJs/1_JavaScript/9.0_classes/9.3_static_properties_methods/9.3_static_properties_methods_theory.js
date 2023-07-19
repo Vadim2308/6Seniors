@@ -36,6 +36,7 @@
     Extends.staticMethod() // console.log('this is static method');
 
     console.log(Extends.__proto__ === User) // для статики
+    console.log(Extends.__proto__.staticMethod()) // в __proto__ лежат статические методы наследники
     // Extends prototype содержит конструктор и extendMethod
     // Extends.prototype.__proto__ содержит конструктор User и customMethod
     console.log(Extends.prototype.__proto__ === User.prototype) // для обычных методов
