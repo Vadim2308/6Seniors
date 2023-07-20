@@ -105,4 +105,3 @@
     console.log(C.__proto__ === Object) // true Если есть ключевое слово extends, то оно в __proto__ сетит родителя
     console.log(C.prototype) //{constructor:C}
 }
-}

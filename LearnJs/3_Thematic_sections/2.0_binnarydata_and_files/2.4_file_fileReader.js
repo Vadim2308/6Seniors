@@ -16,6 +16,9 @@
 
             alert(`File name: ${file.name}`); // например, my.png
             alert(`Last modified: ${file.lastModified}`); // например, 1552830408824
+
+            const fileURL = URL.createObjectURL(file);
+            console.log('Ссылка на файл:', fileURL);
         }
     //     </script>
 }
@@ -41,12 +44,11 @@
 
             reader.onload = function() {
             console.log(reader.result);
-        };
+            };
 
             reader.onerror = function() {
             console.log(reader.error);
-        };
-
+            };
         }
         // </script>
 }
