@@ -10,13 +10,11 @@
  * Его аргументы - resolve и reject
  *     resolve(value) — если работа завершилась успешно, с результатом value.
  *     reject(error) — если произошла ошибка, error – объект ошибки.
- *     reject кидает exeption через throw, поэтому если не обработаем ошибку в catch, в консоли можем увидеть "красный" варнинг. Рекомендуется использовать объект Error
  *
  */
 {
     let promise = new Promise(function(resolve, reject) {
         // функция-исполнитель (executor)
-        // "певец"
     });
 }
 
