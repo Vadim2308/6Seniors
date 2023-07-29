@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<body>
+<a name="list">The list:</a>
+<ul>
+    <li><a href="https://google.com">https://google.com</a></li>
+    <li><a href="/tutorial">/tutorial.html</a></li>
+    <li><a href="local/path">local/path</a></li>
+    <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+    <li><a href="https://nodejs.org">https://nodejs.org</a></li>
+    <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+</ul>
+
+<script>
+    /**
+     * Сделайте все внешние ссылки оранжевыми, изменяя их свойство style.
+     * Ссылка является внешней, если:
+     * Её href содержит ://
+     * Но не начинается с http://internal.com.
+     */
+    const links = document.querySelectorAll('a')
+    console.log(links)
+    for(link of links){
+        if(link.matches('[href*="://"]') && !link.matches('[href^="http://internal.com"]')){
+            link.style.color = 'orange'
+        }
+    }
+    /**
+     * Более короткрое решение
+     */
+    {
+        document.querySelectorAll("a[href*='://']:not(a[href*='internal.com'])").forEach(link=>{
+            link.style.color='orange'
+        })
+    }
+</script>
+</body>
+</html>

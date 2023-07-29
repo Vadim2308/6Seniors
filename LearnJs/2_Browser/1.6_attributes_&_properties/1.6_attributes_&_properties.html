@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    /**
+    .order[order-state="new"] задает зеленый цвет текста для элементов с атрибутом "order-state" равным "new".
+    .order[order-state="pending"] задает синий цвет текста для элементов с атрибутом "order-state" равным "pending".
+    .order[order-state="canceled"] задает красный цвет текста для элементов с атрибутом "order-state" равным "canceled".
+     */
+    .order[order-state="new"] {
+        color: green;
+    }
+
+    .order[order-state="pending"] {
+        color: blue;
+    }
+
+    .order[order-state="canceled"] {
+        color: red;
+    }
+</style>
+
+<div class="order" order-state="new">
+    A new order.
+</div>
+
+<div class="order" order-state="pending">
+    A pending order.
+</div>
+
+<div class="order" order-state="canceled">
+    A canceled order.
+</div>
+</body>
+</html>
