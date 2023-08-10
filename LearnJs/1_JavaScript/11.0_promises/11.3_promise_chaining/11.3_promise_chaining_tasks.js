@@ -62,3 +62,24 @@
      */
 
 }
+
+{
+    const test = new Promise(async (res) => {
+        const letVar = "213";
+
+        console.log("fff");
+
+        await 1;
+
+        console.log("ggg");
+
+        res("123");
+    }).then(() => {
+        console.log("555");
+    });
+
+    console.log("hhh");
+    /**
+     * Output: fff hhh ggg 555
+     */
+}

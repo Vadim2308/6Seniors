@@ -27,7 +27,7 @@
         console.log(result * 2);
         return result * 2;
     });
-    // Output: 2 (спустя 1 сек)    4 (спустя 2 сек)
+    // Output: 2 (спустя 1 сек) 4 (спустя 2 сек)
 
 }
 

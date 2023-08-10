@@ -29,3 +29,18 @@
         alert(event.reason);
     });
 }
+
+// micro tasks
+Promise.resolve()
+await sleep()
+queueMicrotask(()=>{})
+MutationObserver
+IntersectionObserver
+
+process.nextTick // для NodeJs
+
+//macro tasks
+window.addEventListener()
+setInterval()
+setTimeout()
+MessageChannel //  интерфейс, который позволяет установить двухстороннюю связь для передачи сообщений между двумя окнами или воркерами (worker'ами) веб-приложения. О

@@ -25,7 +25,7 @@
         },
         {
             value: 1,
-            isRejected: false
+            isRejected: true
         }
     ]
     const promises = data.map(({ value, isRejected }) => {
@@ -35,7 +35,7 @@
     console.log(promises);
 
     (async function() {
-        for await (let data of promises) {
+        for await (let data of promises) { //автоматически обрабатывает отклоненные промисы.
             console.log(data)
             /**
              * Output:
@@ -46,7 +46,25 @@
             // Если будет в каком то Promise rejected, то будет ошибка, как и в Promise.all
         }
     })()
-    // Это аналогично что и Promise.all(promises).then(console.log)
+        // Это аналогично что и Promise.all(promises).then(console.log)
+
+        // Для того чтоб обрабатывать самому ошибки, можно использовать другой цикл
+        (async function() {
+            for (let i = 0; i < promises.length; i++) {
+                try {
+                    let data = await promises[i];
+                    console.log(data);
+                    /**
+                     * Output:
+                     * 3 was resolved
+                     * 2 was resolved
+                     */
+                } catch (error) {
+                    console.log(error);
+                    // 1 was rejected
+                }
+            }
+        })()
 }
 
 /**
