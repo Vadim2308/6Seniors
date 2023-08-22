@@ -1,14 +1,15 @@
+/**
+ * Задача: реализовать функцию shina, которая принимает массив запросов, и количество запросов, которые могут выполняться одновременно
+ * Например: всего 10 запросов, max = 2. Должно быть 5 пачек запросов по 2, которые выполняются параллельно.
+ */
+
+
 const ids = [1, 2, 3, "i_need_an_error"];
 const MAX = 2;
 
-const sleep = (ms) =>
-    new Promise((res) => {
-        setTimeout(() => {
-            res();
-        }, ms);
-    });
+const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
-const request = (id) =>
+const getTodoById = (id) =>
     fetch(`https://jsonplaceholder.typicode.com/todos/${id}`).then((response) => {
         if (!response.ok) return Promise.reject();
         return response.json();
@@ -20,14 +21,19 @@ async function shina(requests, max) {
     const result = [];
     while (promises.length) {
         const spliced = promises.splice(0, max);
-        const res = await Promise.allSettled(
-            spliced.map((id) => request(id)))
-        const fulfilledRequests = res.filter((d) => d.status === "fulfilled")
-        await sleep(2000); // Просто чтоб удобнее смотреть в девтулзах =)
-        result.push(...fulfilledRequests);
+        const responses = await Promise.allSettled(
+            spliced.map((request) => request()))
+        await sleep(2000); // Просто чтоб удобнее смотреть в девтулзах промежутки между запросами =)
+        result.push(...responses);
     }
-    console.log(result);
     return result;
 }
 
-void shina(ids, MAX);
+const getTodosList = async () => {
+    const requestsList = ids.map(id=> getTodoById.bind(null,id))
+    const result = await shina(requestsList,MAX)
+    console.log(result)
+}
+
+
+void getTodosList()
