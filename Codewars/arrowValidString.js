@@ -9,6 +9,7 @@ const isValidString = (str) => {
     for (let char of str) {
         if (char === MAPPED_BRACKETS.LEFT) {
             count++;
+            continue;
         }
         if (char === MAPPED_BRACKETS.RIGHT) {
             count--;
