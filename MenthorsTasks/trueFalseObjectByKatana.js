@@ -1,3 +1,7 @@
+/**
+ * Реализовать объект, который при сравнении (obj > obj) с самим собой будет давать true/false/true/false (Katana)
+ */
+
 const obj = {
     value: 0,
     [Symbol.toPrimitive]: function(hint) {
