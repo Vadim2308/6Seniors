@@ -30,6 +30,12 @@
     });
 }
 
+/**
+ * Event-loop не является часть движка. Он предоставляется средой. (браузерной или NodeJS)
+ * Устройство Event-loop может быть разным
+ *
+ */
+
 // micro tasks
 Promise.resolve()
 await sleep()
