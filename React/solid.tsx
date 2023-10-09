@@ -164,4 +164,40 @@
             return <LoginForm onSubmit={onSubmit}/>
         }
     }
+
+    /**
+     * Пример с классами
+     */
+    interface MusicApi {
+        getTracks:()=>void
+    }
+    class YandexMusicApi implements MusicApi {
+        getTracks(): void {}// Некоторая реализвация, характерная только для YD
+    }
+    class SpotifyApi implements MusicApi {
+        getTracks(): void {}// Некоторая реализвация, характерная только для Spotify
+    }
+    class VkMusicApi implements MusicApi {
+        getTracks(): void {}// Некоторая реализвация, характерная только для Vk
+    }
+    // Но если мы во всем приложении например везде образаемся к SpotifyApi().getTracks, то при переходе на другой сервис придется рефачить все приложение
+
+    // Грамотнее сделать абстракцию, которая принимает клиент, и реализует нужны методы.
+    // И сюда можно поместить какие-то методы, которые должны вызываться вне зависимости от типа, например отправка в sentry и т.д.
+    class MusicClient implements MusicApi {
+        client:MusicApi
+        constructor(client:MusicApi) {
+            this.client = client
+        }
+
+        getTracks(): void {
+            this.client.getTracks()
+        }
+
+    }
+    const MusicApp = () => {
+        const API:MusicApi = new MusicClient(new SpotifyApi())
+        // Мы в любой момент можем поведение это изменить, например new MusicClient(new YandexMusicApi())
+    }
 }
+
