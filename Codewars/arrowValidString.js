@@ -17,7 +17,7 @@ const isValidString = (str) => {
         }
     }
 
-    return !count;
+    return count === 0;
 };
 
 console.log(isValidString('xsaxsasx')); // true

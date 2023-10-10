@@ -16,7 +16,7 @@
 
 {
     let UNSAFE_socket = new WebSocket("ws://javascript.info");  // Cуществует протокол wss://, использующий шифрование. Это как HTTPS для веб-сокетов. Это предпочтительнее
-    // После того как мы открыли содениение, мы должны слушать 4 события: open message error close
+    // После того как мы открыли соединение, мы должны слушать 4 события: open message error close
     let socket = new WebSocket("wss://javascript.info/article/websocket/demo/hello");
 
     socket.onopen = function(e) {
