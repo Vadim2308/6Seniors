@@ -201,3 +201,58 @@
     }
 }
 
+{
+    // Композиция компонентов представляет собой удобный подход, для проектирования разнообразных интерфейсов, которые должны отрисовываться по определенным условиям
+    // https://www.youtube.com/watch?v=4BByJUk5x7M
+    const LoginInput = () => {
+        const { value } = useCtx();
+        return <input placeholder={`LoginInput input ${value}`} />;
+    };
+    const CardInput = () => {
+        const { value } = useCtx();
+        return <input placeholder={`Card input ${value}`} />;
+    };
+
+    // @ts-ignore
+    const Ctx = createContext(null);
+
+    const useCtx = () => {
+        // @ts-ignore
+        const ctx = useContext(Ctx);
+        if (!ctx) {
+            throw new Error('err');
+        }
+        return ctx;
+    };
+
+    function AuthForm({children}) {
+        return (
+            <Ctx.Provider value={{ value: 1 }}>
+
+                {children}
+            </Ctx.Provider>
+        );
+
+    }
+    AuthForm.LoginInput = LoginInput;
+    AuthForm.CardInput = CardInput;
+    export default AuthForm;
+
+   //=====================================//
+    const AuthByCard = () => {
+        //  Непосредственно сама композиция
+        // @ts-ignore
+        return <AuthForm>
+                   <AuthForm.LoginInput />
+                   <AuthForm.CardInput />
+              </AuthForm>
+    }
+
+    const AuthByPhone = () => {
+        // @ts-ignore
+        return <AuthForm>
+            <AuthForm.LoginInput />
+        </AuthForm>
+    }
+
+}
