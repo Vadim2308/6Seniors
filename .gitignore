@@ -1,3 +1,5 @@
 .idea
 repos.md
 sandboxes
+node_modules
+dist
