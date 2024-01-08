@@ -1,26 +1,38 @@
-function baseStrategy(amount) {
-  return amount;
+/**
+ * Паттерн проектирования Стратегия позволяет выбирать алгоритм выполнения определенного действия в зависимости от ситуации.
+ * Это позволяет легко заменять один алгоритм другим без изменения кода, а также изолировать алгоритмы от основной логики программы.
+ */
+
+// Создание стратегий
+const strategy1 = {
+    execute: () => {
+        console.log('Выполняется стратегия 1');
+    }
 };
 
-function premiumStrategy(amount) {
-  return amount * 0.85;
+const strategy2 = {
+    execute: () => {
+        console.log('Выполняется стратегия 2');
+    }
 };
 
-function platinumStrategy(amount) {
-  return amount * 0.65;
-};
+// Класс контекста
+class Context {
+    constructor(strategy) {
+        this.strategy = strategy;
+    }
 
-class AutoCart {
-  constructor(discount) {
-    this.discount = discount;
-    this.amount = 0;
-  }
+    setStrategy(strategy) {
+        this.strategy = strategy;
+    }
 
-  checkout() {
-    return this.discount(this.amount);
-  }
+    executeStrategy() {
+        this.strategy.execute();
+    }
+}
 
-  setAmount(amount) {
-    this.amount = amount;
-  }
-};
+// Использование
+const context = new Context(strategy1);
+context.executeStrategy(); // Выводит: "Выполняется стратегия 1"
+context.setStrategy(strategy2);
+context.executeStrategy(); // Выводит: "Выполняется стратегия 2"

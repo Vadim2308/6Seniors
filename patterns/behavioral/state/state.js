@@ -1,38 +1,87 @@
-class OrderStatus {
-	constructor(name, nextStatus) {
-		this.name = name;
-		this.nextStatus = nextStatus;
-	}
+/**
+ *  Паттерн Состояние управляет изменением поведения объекта при изменении его внутреннего состояния.
+ *  Основная идея в том, что программа может находиться в одном из нескольких состояний, которые всё время сменяют друг
+ *  друга. Набор этих состояний, а также переходов между ними, предопределён и конечен. Находясь в разных состояниях,
+ *  программа может по-разному реагировать на одни и те же события, которые происходят с ней.
+ */
 
-	next() {
-		return new this.nextStatus();
-	}
+class Light {
+    constructor(light) {
+        this.light = light
+    }
 }
 
-class WaitingForPayment extends OrderStatus {
-	constructor() {
-		super('waitingForPayment', Shipping);
-	}
+class RedLight extends Light {
+    constructor() {
+        super('red')
+    }
+
+    sign() {
+        return 'СТОП'
+    }
 }
 
-class Shipping extends OrderStatus {
-	constructor() {
-		super('shipping', Delivered);
-	}
+class YellowLight extends Light {
+    constructor() {
+        super('yellow')
+    }
+
+    sign() {
+        return 'ГОТОВЬСЯ'
+    }
 }
 
-class Delivered extends OrderStatus {
-	constructor() {
-		super('delivered', Delivered);
-	}
+class GreenLight extends Light {
+    constructor() {
+        super('green')
+    }
+
+    sign() {
+        return 'ЕДЬ!'
+    }
 }
 
-class Order {
-	constructor() {
-		this.state = new WaitingForPayment();
-	}
+class TrafficLight {
+    constructor() {
+        this.states = [
+            new RedLight(),
+            new YellowLight(),
+            new GreenLight()
+        ]
+        this.current = this.states[0]
+    }
 
-	nextState() {
-		this.state = this.state.next();
-	};
+    change() {
+        const total = this.states.length
+        let index = this.states.findIndex(light => light === this.current)
+
+        if (index + 1 < total) {
+            this.current = this.states[index + 1]
+        } else {
+            this.current = this.states[0]
+        }
+    }
+
+    sign() {
+        return this.current.sign()
+    }
 }
+
+const traffic = new TrafficLight()
+console.log(traffic.sign())
+traffic.change()
+
+console.log(traffic.sign())
+traffic.change()
+
+console.log(traffic.sign())
+traffic.change()
+
+console.log(traffic.sign())
+traffic.change()
+
+console.log(traffic.sign())
+traffic.change()
+
+console.log(traffic.sign())
+traffic.change()
