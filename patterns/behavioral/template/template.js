@@ -1,44 +1,48 @@
-class Builder {
-	build() {
-		this.addEngine();
-		this.installChassis();
-		this.addElectronic();
-		this.collectAccessories();
-	}
-};
+/**
+ * В паттерне создается базовый класс, в котором нет завязки на конкретику. Конкретика вся в наследниках
+ */
 
-class TeslaBuilder extends Builder {
-	addEngine() {
-		console.log('Add Electronic Engine');
-	}
+class Employee {
+    constructor(name, salary) {
+        this.name = name
+        this.salary = salary
+    }
 
-	installChassis() {
-		console.log('Install Tesla chassis');
-	}
+    responsibilities() {}
 
-	addElectronic() {
-		console.log('Add special electronic');
-	}
+    work() {
+        return `${this.name} выполняет ${this.responsibilities()}`
+    }
 
-	collectAccessories() {
-		console.log('Collect Accessories');
-	}
+    getPaid() {
+        return `${this.name} имеет ЗП ${this.salary}`
+    }
 }
 
-class BmwBuilder extends Builder {
-	addEngine() {
-		console.log('Add BMW Engine');
-	}
+class Developer extends Employee {
+    constructor(name, salary) {
+        super(name, salary)
+    }
 
-	installChassis() {
-		console.log('Install BMW chassis');
-	}
-
-	addElectronic() {
-		console.log('Add electronic');
-	}
-
-	collectAccessories() {
-		console.log('Collect Accessories');
-	}
+    responsibilities() {
+        return 'процесс создания программ'
+    }
 }
+
+class Tester extends Employee {
+    constructor(name, salary) {
+        super(name, salary)
+    }
+
+    responsibilities() {
+        return 'процесс тестирования'
+    }
+}
+
+const dev = new Developer('Владилен', 100000)
+console.log(dev.getPaid())
+console.log(dev.work())
+
+const tester = new Tester('Виктория', 90000)
+console.log(tester.getPaid())
+console.log(tester.work())

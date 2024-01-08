@@ -1,30 +1,53 @@
-class ArrayIterator {
-	constructor(el) {
-		this.index = 0;
-		this.elements = el;
-	}
+/**
+ * Вся идея в том, чтоб создать объект в котором мы последовательно будем получать некоторую информацию
+ */
 
-	next() {
-		return this.elements[this.index++];
-	}
+class MyIterator {
+    constructor(data) {
+        this.index = 0
+        this.data = data
+    }
 
-	hasNext() {
-		return this.index < this.elements.length;
-	}
-};
+    [Symbol.iterator]() {
+        return {
+            next: () => {
+                if (this.index < this.data.length) {
+                    return {
+                        value: this.data[this.index++],
+                        done: false
+                    }
+                } else {
+                    this.index = 0
+                    return {
+                        done: true,
+                        value: void 0
+                    }
+                }
+            }
+        }
+    }
+}
 
-class ObjectIterator {
-	constructor(el) {
-		this.index = 0;
-		this.keys = Object.keys(el),
-		this.elements = el;
-	}
+function* generator(collection) {
+    let index = 0
 
-	next() {
-		return this.elements[this.keys[this.index++]];
-	}
+    while (index < collection.length) {
+        yield collection[index++]
+    }
+}
 
-	hasNext() {
-		return this.index < this.keys.length;
-	}
-};
+
+const iterator = new MyIterator(['This', 'is', 'iterator'])
+const gen = generator(['This', 'is', 'iterator'])
+
+// for(let v of iterator){
+//     console.log(v)
+// }
+
+// for (const val of gen) {
+//   console.log('Value: ', val)
+// }
+
+console.log(gen.next().value)
+console.log(gen.next().value)
+console.log(gen.next().value)
