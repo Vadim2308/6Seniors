@@ -1,0 +1,42 @@
+body {
+    color: white;
+}
+
+.container {
+    display: grid;
+    gap: 10px 20px;
+    grid-template: 500px 300px / 100px 550px 100px;
+    width: 1100px;
+    height: 1000px;
+    border: 1px solid #222;
+    /*align-items: center;*/
+    /*justify-items: center;*/
+    /*place-items: end center; !** Тоже самое, только сокращенно align-items / justify-items **!*/
+
+    align-content: space-between; /* По вертикали */
+    justify-content: space-between;/* По горизонтали */
+    /* place-content: Сокращенное название для  align-content / justify-content */
+}
+
+.container > * {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+header {
+    background-color: darkgreen;
+}
+
+article {
+    background-color: black;
+}
+
+aside {
+    background-color: maroon;
+    align-self: end;
+    justify-self: end;
+}
+
+footer {
+    background-color: darkblue;
+}

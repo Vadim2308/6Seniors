@@ -1,0 +1,38 @@
+body {
+    color: white;
+}
+/* grid-template - сокращенная запись от grid-template-areas / grid-template-rows / grid-template-columns */
+.container {
+    display: grid;
+    gap: 10px 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+         "header   header   header    header"
+         "article  article  .         sidebar"
+         "footer   footer   footer    footer";
+}
+
+.container > * {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+header {
+    grid-area: header;
+    background-color: darkgreen;
+}
+
+article {
+    grid-area: article;
+    background-color: black;
+}
+
+aside {
+    grid-area: sidebar;
+    background-color: maroon;
+}
+
+footer {
+    grid-area: footer;
+    background-color: darkblue;
+}
